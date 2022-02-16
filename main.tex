@@ -1,0 +1,226 @@
+\documentclass[11 pt]{article}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+
+\title{Problem set 3}
+\author{Pablo Boixeda Alvarez}
+
+\newtheorem{Prob}{Problem}
+\newtheorem{Prop}{Proposition}
+\newtheorem{Opt}{Optional Problem}
+
+\theoremstyle{definition}
+\newtheorem{Not}{Notation}
+\newtheorem{Def}{Definition}
+\newtheorem{eg}{Example}
+\newtheorem{re}{Reading}
+
+\theoremstyle{remark}
+\newtheorem{rmk}{Remark}
+
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+  {\end{proof}}
+
+\begin{document}
+\section*{Math 350 Introduction to Abstract algebra}
+\subsection*{Problem set 3}
+
+\begin{re}
+	DF 2.3-2.5
+\end{re}
+\begin{Prob} (Starred* problems are required)
+	
+	DF 1.6:  4, 6, 14, 16, 24*, 25
+	
+	DF 1.7: 8, 14, 15, 18*, 19
+	
+	DF 2.1: 2, 9*
+	
+	DF 2.2 3, 6*, 8, 10*
+\end{Prob}
+
+\begin{solution}
+(1.6.24)
+
+Let $t = xy$. Then, by 1.2.6, we have that $tx = xt^{-1}$
+
+(1.7.18)
+
+If we want to prove that $~$ is an equivalence relation, we need to show that the operator is reflexive, symmetric and transitive. 
+
+(1) Because $H$ is acting on set $A$, for all $a \in A$, we have $a = 1 \cdot a$, so $x ~ x$, so $~$ is reflexive.
+
+(2) Suppose that $x ~ y$. Then, we have that $a = h \cdot y$ for some $h \in H$. Then, $y = h^{-1} \cdot y$, so $y ~ x$ for $h_0 = h ^{-1} \in H$. Thus, $~$ is symmetric.
+
+(3) Suppose that $x ~ y$ and $y ~ z$. Then there exists $i,j \in H$ such that $x = i\cdot y, y = j \cdot z$. Then, $x = i \cdot (j \cdot z) = (ij) \cdot z$, so $x ~ z$ for $h_0 = ij \in H$. Thus, $~$ is transitive. 
+
+Thus, $~$ is an equivalence relation.
+
+2.1.9
+
+By construction, for $a, b \in GL_n(F)$, we have $det(AB) = det(A)det(B)$
+
+2.2.6
+
+(A)
+By construction, since $H$ is a subgroup of $G$, $H$ forms a group under the group operation, so all we need to show is that $H \subseteq N_G(H)$. For all $x \in H$, we will prove that $H = x^{-1}Hx$. First we will prove that $x^{-1}Hx \subseteq H$. Given some $x^{-1}hx \in x^{-1}Hx$, by the group operation property of $H$, $x^{-1}hx \in H$. Next, to show that $H \subseteq x^{-1}Hx$, consider some $h \in H$. Since $H$ is closed under group operation, $xhx^{-1} \in H$, so $h = x^{-1}(xhx^{-1})a \in x^{-1}Hx$. Thus, we have that for all $x \in H$, $x \in N_G(H)$, so $H \subseteq N_G(H)$, and thus $H \leq N_G(H)$. 
+
+***FINISH COUNTEREXAMPLE*****
+
+(B)
+($\rightarrow$) Suppose $H \leq C_G(H)$ and let $a \in H$. By construction, $a \in C_G(H)$, so $aba^{-1}=b$ for some $b \in H$, which simplifies to $ab=ba$, so $H$ is abelian. 
+
+($\leftarrow$) Suppose that $H$ is abelian and let $a \in H$. Then, we have that $ab=ba$ for all $b \in H$. Multiplying the right by $a^{-1}$, we have $aba^{-1}=b$, so $a \in C_G(H)$. Thus, we have that $H \in C_G(H)$.
+
+By proving the claim in both directions, we have satisfied the iff condition, and we are done.
+
+2.2.10
+
+Since $H$ has two elements, let $H={1,h}$ where $h \neq 1$. By definition, clearly $C_G(H) \subseteq N_G(H)$. Now, to prove that $N_G(H) \subseteq C_G(H)$, suppose that $g \in N_G(H)$. Note that by the normalizer construction, since $ghg^{-1} \in gHg^{-1}$, it follows that $ghg^{-1} \in H$. Note that $ghg^{-1} \neq 1$ since $h \neq 1$, $ghg^{-1} = h$. Thus, we have that $ghg^{-1} = h$ for all elements $h \in H$. Thus, it follows that $g \in C_G(H)$ and thus, that $N_G(H) \subseteq C_G(H)$. Finally, we have that $N_G(H) = C_G(H)$.
+
+Next, suppose that $N_G(H) = G$. Then, by above, $G = C_G(H)$, and since $Z(G) = C_G(G)$, we have that $hg=gh$ for all $g \in G$. Thus, $h \in Z(G)$. Thus, it follows that $H \leq Z(G)$.
+\end{solution}
+
+
+\begin{Prob}
+	Let $\theta: G\rightarrow H$ an isomorphism.
+\begin{enumerate}
+	\item Prove that $|x|=|\theta(x)|$, ie $\theta$ preserves the order of elements. Is the statement still true if $\theta$ is only a homomorphism.
+	\item Deduce that isomorphic groups have the same number of elements of order $n$ for $n\in\mathbb{Z}^+$.
+	\item Deduce that $D_{24}$ and $S_4$ are not isomorphic.
+\end{enumerate}
+\end{Prob}
+
+\begin{solution}
+\begin{enumerate}
+    \item For $\theta$ to be an isomorphism, $x$ and $|\theta(x)|$ clearly both have to be infinite or finite. If both are infinite, they would be equal, so let's consider the finite case. Suppose that $|x| = n$ and $|\theta(x)| = m$. Then, we have $\theta(x)^n = \theta(x^n) = \theta(1) = 1$, so $m \leq n$. Similarly, $\theta(1) = 1 = \theta(x)^m = \theta(x^m)$ and so $x^m = 1$ since isomorphism implies injection. Thus, $n \leq m$. Thus, it follows that $n=m$ and thus, $|x| = |\theta(x)|$. Note that the proof only holds due to the injective property of $\theta$. If the mapping was not injective, or just a homomorphism, the claim would not hold.
+    
+    \item By definition and by the above claim, for all $n$, we have a bijection on the set of order $n$ elements in $G$ to the set of order $n$ elements in $H$ by $\theta$. Thus, we can deduce that these sets have the same number of elements.
+    
+    \item By definition, $D_{24} = \langle x,y \mid x^{12} = y^2=1, xy=yx^{-11} \rangle$. $x$ has order 12, but note that the maximum order $S_4$ can have is order 4 by a "complete" cycle. Thus, $S_4$ has no order 12 element. Then, by the above claim(s), it follows that $S_4$ and $D_{24}$ are clearly not isomorphic.
+\end{enumerate}
+\end{solution}
+
+\begin{Prob}
+	Let $G$ be a group.
+	\begin{enumerate}
+		\item Prove that the map $g\mapsto g^{-1}$ for $g\in G$ is a homomorphism if and only if  $G$ is abelian.
+		\item Prove that the map $g\mapsto g^{2}$ for $g\in G$ is a homorphism if and only if  $G$ is abelian.
+	\end{enumerate}
+\end{Prob}
+
+
+\begin{solution}
+\begin{enumerate}
+    \item To prove the iff condition, we must prove the claim in both directions.
+
+    $(\rightarrow)$ Suppose that $G$ is a homomorphism. Then, for $x,y \in G$, we have 
+    \begin{align}
+        f(xy) &= f(x)f(y) \\
+        y^{-1}x^{-1} &= x^{-1}y^{-1} \\
+        xy &= xy \\
+    \end{align}
+    which means that $G$, by definition, is an abelian group.
+    $(\leftarrow)$ Suppose that $G$ is abelian. Then, for $x,y \in G$, we have
+    \begin{align}
+        f(xy) &= (xy)^-1 \\
+              &= y^{-1}x^{-1} \\
+              &= x^{-1}y^{-1} \\
+              &= f(x)f(y)
+    \end{align}
+    By definition, we have that $G$ is a homomorphism.
+    
+    Because we have proved both directions, the iff claim holds.
+    
+    
+    \item Again, let's prove the claim in both directions.
+
+    $(\rightarrow)$ Suppose that $G$ is a homomorphism. Then, for $x,y \in G$, we have 
+    \begin{align}
+        f(xy) &= f(x)f(y) \\
+        (xy)^2&= x^2y^2 \\
+        xyxy  &= xxyy \\
+        x^{-1}(xyxy)y^{-1} &= x^{-1}(xxyy)y^{-1} \\
+        yx &= xy \\
+    \end{align}
+    which means that $G$, by definition, is an abelian group.
+    
+    $(\leftarrow)$ Suppose that $G$ is an abelian group. Then, for $x,y \in G$, we have
+    \begin{align}
+        f(ab) &= (ab)^2 \\
+          &= (ab)(ab) \\
+          &= aabb \\
+          &= f(a)f(b) \\
+    \end{align}
+    By definition, we have that $G$ is a homomorphism.
+    
+    Because we have proved both directions, the iff claim holds.
+\end{enumerate}
+
+\end{solution}
+
+\begin{Prob} (Field of 4 elements)
+	\begin{enumerate}
+		\item  Let $\mathbb{F} = \{0, 1, x, y\}$. Prove that there are operations $+$ and $\cdot$ on $\mathbb{F}$, such that $1 + x = y$ and $x^2 = y$, making $\mathbb{F}$ into a field. (Note that the four elements of F are distinct!). Essentially the problem is to fill out the addition and multiplication tables:
+		
+		\begin{center}
+			\begin{tabular}{ c| c | c | c | c |}
+				+ & 0 & 1 & x & y \\
+				\hline
+				0 & 0 & 1 & x & y \\ 
+				\hline
+				1 & 1 & 0 & y & x \\ 
+				\hline
+				x & x & y & 0 & 1 \\ 
+				\hline
+				y & y & x & 1 & 0 \\ 
+				\hline
+			\end{tabular}  &
+			\begin{tabular}{ c| c | c | c | c |}
+				$\cdot$ & 0 & 1 & x & y \\
+				\hline
+				0 & 0 & 0 & 0 & 0 \\ 
+				\hline
+				1 & 0 & 1 & x & y \\ 
+				\hline
+				x & 0 & x & y & 1 \\ 
+				\hline
+				y & 0 & y & 1 & x \\ 
+				\hline
+			\end{tabular}
+		\end{center}
+		
+	
+		You already know certain rows and columns by properties of 0 and 1 in a field!
+		\item Let $\mathbb{F}_1$ and $\mathbb{F}_2$ be fields. A map $\phi : \mathbb{F}_1 \rightarrow \mathbb{F}_2$ is an isomorphism of fields if $\phi$ is a bijection satisfying $\phi(x + y) = \phi(x) + \phi(y)$ and $\phi(xy) = \phi(x)\phi(y)$ and $\phi(1_{\mathbb{F}_1}) = 1_{\mathbb{F}_2}$. An isomorphism between a field and itself is called an automorphism. Find a non-identity automorphism of the field F of order 4 described above.
+		
+		\item  Let $\mathbb{F}_0$ be any field with 4 elements. Prove that there exists an isomorphism $\phi : \mathbb{F} \rightarrow \mathbb{F}_0$,
+		where $\mathbb{F}$ is the field described above.
+		
+	\end{enumerate}
+This shows that there is a unique “isomorphism class” of field of order 4, which we call $\mathbb{F}_4$.
+
+\end{Prob}
+
+\begin{solution}
+\begin{enumerate}
+    \item Look at provided grid in problem
+    \item Consider the non-identity automorphism $\theta$ where $\theta(0)=0, \theta(1)=1, \theta(x)=y,$ and $\theta(y)=x$.
+    \item Because there are an odd number of non-zero elements in $F_0={0,1,a,b}$, there must be at least 2 elements as their own additive inverses. Let this be $a$. Then, we have
+		$1+1 = aa^{-1}+aa^{-1} = a^{-1}(a+a) = a^{-1}0=0$. Our second element is clearly the identity $1$. From this, we can show that our third nonzero element, which we call $b$, is also its own additive inverse. Note that $b+b=1b+1b=(1+1)b=0b=0$. From this, we can complete the additive table. For example, we know that $a+0=a$ and $a+a=0$, so it follows that $a+1=b$ since if $a+1=a$, $1=0$ which is a contradiction, and that $a+b = 1$. 
+		
+		Now for multiplication, excluding the identity and zero products, we only care about $a\cdot a$, $a \cdot b$ and $b \cdot b$. However, by the distributive property and $a+1=b$, we only need to investigate $a \cdot a$.
+		
+		*****FINISH THIS*****
+		
+		$a \cdot a = b$. Then, we have that $a \cdot b = a(a+1) = b+a=1$ and $b\cdot b = (a+1)(a+1) = b + a(1+1) + 1 = b+0+1=a$. 
+		
+		Now, by mapping $0 \rightarrow 0, 1 \rightarrow 1, x \rightarrow a, y \rightarrow b$, we can clearly see that $\phi$ is not only bijective, but also homomorphic, showing that the existence of an isomorphism.
+\end{enumerate}
+\end{solution}
+\footnotetext{Email address: pablo.boixedaalvarez@yale.edu}
+
+
+
+\end{document}
